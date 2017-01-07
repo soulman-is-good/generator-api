@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars*/
 'use strict';
 var Generator = require('yeoman-generator');
 var chalk = require('chalk');
@@ -23,11 +24,36 @@ module.exports = Generator.extend({
     }.bind(this));
   },
 
+  welcome: function () {
+    this.log(yosay(
+      'Welcome to the HotTowel AngularJS generator!'
+    ));
+  },
+
   writing: function () {
     this.fs.copy(
       this.templatePath('dummyfile.txt'),
       this.destinationPath('dummyfile.txt')
     );
+  },
+
+  displayName: function() {
+    this.log('Creating ' + this.appName + ' app based on HotTowel.');
+  },
+
+  packageFiles: function() {
+    var context = {
+      appName: this.appName
+    };
+
+    this.copy('_package.json', 'package.json');
+    this.template('_bower.json', 'bower.json');
+    this.template('_gulpfile.js', 'gulpfile.js');
+    this.template('_gulp.config.js', 'gulp.config.js');
+    this.template('_karma.conf.js', 'karma.conf.js');
+    this.template('_README.md', 'README.md');
+    // this.directory('src/client/test-helpers');
+    // this.template('src/client/_index.html', 'src/client/index.html');
   },
 
   install: function () {
