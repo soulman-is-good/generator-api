@@ -47,6 +47,7 @@
   },
   "repository": "tamer1an/generator-neo-api",
   "scripts": {
+    "gen-loc": "cd app && yo ../generators/app",
     "prepublish": "gulp prepublish",
     "test": "gulp"
   },
