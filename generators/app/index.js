@@ -5,13 +5,12 @@ var chalk = require('chalk');
 var yosay = require('yosay');
 
 module.exports = Generator.extend({
-  initializing: function () {
+  // initializing: function () {
   // this.pkg = require('package.json');
-
-    this.log(yosay(
-      '=====PATH: ' + this.destinationRoot() + ' ====!'
-    ));
-  },
+  //   this.log(yosay(
+  //     '==INIT==='
+  //   ));
+  // },
 
 /*
 
@@ -47,9 +46,8 @@ module.exports = Generator.extend({
 */
 
   prompting: function () {
-    // Have Yeoman greet the user.
     this.log(yosay(
-      'Welcome' + chalk.red('generator-neo-api') + ' generator!'
+      '==PATH: ' + this.destinationRoot() + ' ====!'
     ));
 
     var prompts = [{
@@ -66,8 +64,9 @@ module.exports = Generator.extend({
   },
 
   welcome: function () {
+    // Have Yeoman greet the user.
     this.log(yosay(
-      'Welcome to the HotTowel AngularJS generator!'
+      'Welcome ' + chalk.red('api') + ' generator!'
     ));
   },
 
@@ -98,6 +97,6 @@ module.exports = Generator.extend({
   },
 
   install: function () {
-    this.installDependencies({ bower: false });
+    this.npmInstall(); // this.installDependencies({ bower: false });
   }
 });
