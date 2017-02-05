@@ -3,6 +3,7 @@
 var Generator = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
+var fs = require('fs-extra');
 
 module.exports = Generator.extend({
   // initializing: function () {
@@ -52,8 +53,8 @@ module.exports = Generator.extend({
 
     var prompts = [{
       type: 'confirm',
-      name: 'Light version?',
-      message: 'Would you like to enable this option?',
+      name: 'buildType',
+      message: 'Light version?',
       default: true
     }];
 
@@ -82,10 +83,7 @@ module.exports = Generator.extend({
       { title: 'Templating with Yeoman' }
     );
 
-    // this.fs.copy(
-    //   this.templatePath('api'),
-    //   this.destinationPath('.api')
-    // );
+    // fs.copy(this.templatePath('_api/'), this.destinationPath('api/'));
   },
 
   displayName: function () {
