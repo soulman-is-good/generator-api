@@ -12,7 +12,7 @@ describe('generator-neo-api:app', function () {
 
   it('creates files', function () {
     assert.file([
-      'package.json', 'v1-spec.raml'
+      'package.json'
     ]);
   });
 });
