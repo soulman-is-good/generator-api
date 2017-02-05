@@ -49,12 +49,12 @@ module.exports = Generator.extend({
   prompting: function () {
     // Have Yeoman greet the user.
     this.log(yosay(
-      'Welcome to the cool ' + chalk.red('generator-neo-api') + ' generator!'
+      'Welcome' + chalk.red('generator-neo-api') + ' generator!'
     ));
 
     var prompts = [{
       type: 'confirm',
-      name: 'someAnswer',
+      name: 'Light version?',
       message: 'Would you like to enable this option?',
       default: true
     }];
@@ -98,6 +98,6 @@ module.exports = Generator.extend({
   },
 
   install: function () {
-    this.installDependencies();
+    this.installDependencies({ bower: false });
   }
 });
