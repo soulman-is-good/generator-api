@@ -60,21 +60,6 @@ module.exports = Generator.extend({
       this.destinationPath('package.json')
     );
 
-    this.fs.copy(
-      this.templatePath('.eslintrc'),
-      this.destinationPath('.eslintrc')
-    );
-
-    this.fs.copy(
-      this.templatePath('eslint.json'),
-      this.destinationPath('eslint.json')
-    );
-
-    this.fs.copy(
-      this.templatePath('.editorconfig'),
-      this.destinationPath('.editorconfig')
-    );
-
     // this.fs.copy(
     //   this.templatePath('api'),
     //   this.destinationPath('.api')
