@@ -5,6 +5,30 @@ var chalk = require('chalk');
 var yosay = require('yosay');
 
 module.exports = Generator.extend({
+  initializing: function () {
+  // this.pkg = require('package.json');
+
+    this.log(yosay(
+      '=====PATH: ' + this.destinationRoot() + ' ====!'
+    ));
+  },
+
+  /* prompting() {
+   return this.prompt([{
+   type    : 'input',
+   name    : 'name',
+   message : 'Your project name',
+   default : this.appname // Default to current folder name
+   }, {
+   type    : 'confirm',
+   name    : 'cool',
+   message : 'Would you like to enable the Cool feature?'
+   }]).then((answers) => {
+   this.log('app name', answers.name);
+   this.log('cool feature', answers.cool);
+   });
+   } */
+
   prompting: function () {
     // Have Yeoman greet the user.
     this.log(yosay(
@@ -34,6 +58,32 @@ module.exports = Generator.extend({
     this.fs.copy(
       this.templatePath('package.json'),
       this.destinationPath('package.json')
+    );
+
+    this.fs.copy(
+      this.templatePath('.eslintrc'),
+      this.destinationPath('.eslintrc')
+    );
+
+    this.fs.copy(
+      this.templatePath('eslint.json'),
+      this.destinationPath('eslint.json')
+    );
+
+    this.fs.copy(
+      this.templatePath('.editorconfig'),
+      this.destinationPath('.editorconfig')
+    );
+
+    // this.fs.copy(
+    //   this.templatePath('api'),
+    //   this.destinationPath('.api')
+    // );
+
+    this.fs.copyTpl(
+      this.templatePath('v1-spec.raml'),
+      this.destinationPath('v1-spec.raml'),
+      { title: 'Templating with Yeoman' }
     );
   },
 

@@ -10,11 +10,11 @@ var plumber = require('gulp-plumber');
 var coveralls = require('gulp-coveralls');
 
 gulp.task('static', function () {
-  return gulp.src('**/*.js')
-    .pipe(excludeGitignore())
-    .pipe(eslint())
-    .pipe(eslint.format())
-    .pipe(eslint.failAfterError());
+  // return gulp.src('**/*.js')
+  //   .pipe(excludeGitignore())
+  //   .pipe(eslint())
+  //   .pipe(eslint.format())
+  //   .pipe(eslint.failAfterError());
 });
 
 gulp.task('nsp', function (cb) {
