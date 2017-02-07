@@ -1,5 +1,5 @@
 {
-  "name": "generator-neo-api",
+  "name": "generator-api",
   "version": "0.0.1",
   "description": "Data generator for developing porpuse",
   "homepage": "https://github.com/tamer1an/generator-api",
@@ -44,7 +44,7 @@
       "mocha": true
     }
   },
-  "repository": "tamer1an/generator-neo-api",
+  "repository": "tamer1an/generator-api",
   "keywords": [
     "raml",
     "server",
