@@ -1,0 +1,37 @@
+#%RAML 0.8
+title: "<%= desc %>"
+version: "<%= version %>"
+baseUri: "<%= baseUrl %>"
+protocols: [HTTPS, HTTP]
+mediaType: "application/json"
+
+resourceTypes:
+  - collection:
+      description: Collection of available <<resourcePathName>>.
+      get?:
+        responses:
+          200:
+            description: Success!
+            body:
+              application/json:
+                example: "example"
+                schema: "schema"
+  - collection-item:
+      description: Entity representing a <<resourcePathName|!singularize>>
+      get?:
+        description: |
+          Get the <<resourcePathName|!singularize>>
+          with <<resourcePathName|!singularize>>Id =
+          {<<resourcePathName|!singularize>>Id}
+        responses:
+          200:
+            description: Success!
+            body:
+              application/json:
+                example: "example"
+                schema: "schema"
+
+/<%= apiRoot %>:
+  /<%= apiItem %>:
+
+
