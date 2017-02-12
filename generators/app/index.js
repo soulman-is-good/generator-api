@@ -47,7 +47,7 @@ module.exports = yeoman.extend({
     this.log('root: ', this.destinationRoot());
     let greeting = 'Your project';
     let dots = '...';
-    let doneConfig = false;
+    // let doneConfig = false;
 
     let prompts = [{
       type: 'input',
