@@ -7,7 +7,7 @@ var fs = require('fs-extra');
 var path = require('path');
 var inquirer = require('inquirer');
 
-let {
+const {
   files,
   folder,
   templates,
@@ -45,65 +45,78 @@ module.exports = yeoman.extend({
 
   prompting() {
     this.log('root: ', this.destinationRoot());
-    let greeting = 'Your project';
-    let dots = '...';
-    // let doneConfig = false;
+    const greeting = 'Your project';
+    const dots = '...';
 
     let prompts = [{
       type: 'input',
       name: 'name',
       message: `${greeting} name`,
-      default: this.api.name
+      default: this.api.name,
+      // validate: (input) => {
+      //   return true;
+      // },
     }, {
       type: 'input',
       name: 'desc',
       message: `${dots} description`,
-      default: this.api.desc
+      default: this.api.desc,
     }, {
       type: 'input',
       name: 'version',
       message: `${dots} version`,
-      default: this.api.version
+      default: this.api.version,
     }, {
       type: 'input',
       name: 'baseUrl',
       message: `${dots} baseUrl`,
-      default: this.api.baseUrl
+      default: this.api.baseUrl,
     }, {
       type: 'input',
       name: 'apiRoot',
       message: `${dots} apiRoot`,
-      default: this.api.apiRoot
+      default: this.api.apiRoot,
     }, {
-      type: 'checkbox',
+      type: 'rawlist', // 'list',
       name: 'features',
       message: 'Create API item?',
       choices: [{
         name: 'Item',
         value: 'includeItem',
-        checked: true
+        checked: true,
       }, {
         name: 'Item Collection',
         value: 'includeCollection',
-        checked: true
+        checked: true,
       }, {
         name: 'Item getByID',
         value: 'includeGetByID',
-        checked: true
+        checked: true,
+      }],
+    }, {
+      type: 'checkbox',
+      name: 'features',
+      message: 'Create API item?',
+      // filter: (filter) => new Promise((e) => {
+          // this.log('this', this.log);
+          // this.log('w', e);
+          // this.log('arg', arguments);
+          // this.log('filter', filter);
+      // }),
+      choices: [{
+        name: 'Item',
+        value: 'includeItem',
+        checked: true,
+      }, {
+        name: 'Item Collection',
+        value: 'includeCollection',
+        checked: true,
+      }, {
+        name: 'Item getByID',
+        value: 'includeGetByID',
+        checked: true,
       }]
     }];
-
-    // TODO WHILE
-    // return inquirer.prompt(prompts).then(function (answers) {
-    //   this.props = answers;
-    //   this.apiConfig = this.api;
-    //   this.apiConfig.apiItem = createItem(
-    //     'user2',
-    //     'collection',
-    //     'userSchema',
-    //     'userExample'
-    //   );
-    // }.bind(this));
 
     return this.prompt(prompts).then(function (answers) {
       this.props = answers;
@@ -174,10 +187,61 @@ module.exports = yeoman.extend({
   },
 
   displayName() {
-    this.log(`Creating ${this.appName} app based on RAML.`);
+    this.log(12345);
   },
 
   install() {
     this.npmInstall();
   }
 });
+
+// var Rx = require('rx');
+// const g = 'select';
+// const p = [{
+//   type: 'input',
+//   name: 'name',
+//   message: `${g} name`,
+//   default: this.api.name
+// }, {
+//   type: 'input',
+//   name: 'name',
+//   message: `${g} name`,
+//   default: this.api.name
+// }, {
+//   type: 'input',
+//   name: 'name',
+//   message: `${g} name`,
+//   default: this.api.name
+// }, {
+//   type: 'input',
+//   name: 'name',
+//   message: `${g} name`,
+//   default: this.api.name
+// }];
+// return this.prompt(p).then((answers) => { });
+// var p = new Rx.Subject();
+// inquirer.prompt(p);
+// At some point in the future, push new questions
+// p.onNext({
+//   type: 'input',
+//   name: 'name',
+//   message: `${g} name`,
+// });
+// p.onNext({
+//   type: 'input',
+//   name: 'name',
+//   message: `${g} name`,
+// });
+// When you're done
+// p.onCompleted();
+// TODO WHILE
+// return inquirer.prompt(prompts).then(function (answers) {
+//   this.props = answers;
+//   this.apiConfig this.api;
+//   this.apiConfig.apiItem = createItem(
+//     'user2',
+//     'collection',
+//     'userSchema',
+//     'userExample'
+//   );
+// }.bind(this));

@@ -13,7 +13,7 @@
   ],
   "main": "generators/index.js",
   "scripts": {
-    "gen-loc": "cd app && yo ../generators/app",
+    "gen-loc": "cd ../gen && yo ../generators/app",
     "prepublish": "gulp prepublish",
     "test": "gulp"
   },
